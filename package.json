@@ -1,0 +1,30 @@
+{
+  "name": "digital-wallet",
+  "version": "1.0.0",
+  "description": "Carteira Digital",
+  "main": "index.js",
+  "license": "ISC",
+  "scripts": {
+    "start": "sucrase-node src/index.js",
+    "dev": "nodemon src/index.js",
+    "build": "sucrase src -d build --transforms javascript,imports"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GHilario/digital-wallet.git"
+  },
+  "keywords": [],
+  "author": "Gabriel Rozendo",
+  "homepage": "https://github.com/GHilario/digital-wallet#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "sucrase": "^3.20.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0"
+  }
+}
