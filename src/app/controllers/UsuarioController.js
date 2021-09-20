@@ -3,6 +3,36 @@ import UsuarioService from "../services/UsuarioService";
 
 class UsuarioControler {
   async store(req, res) {
+    /* 
+      #swagger.tags = ['Usuário']
+      #swagger.description = 'Endpoint para criar um usuário'
+      #swagger.parameters = {
+        in:'body',
+        description:'Dados do usuário',
+        required:true,
+        schema: {
+          $ref: '#/definitions/Usuario'
+        }
+      }
+      #swagger.responses[400] = { 
+        description: 'Parâmetros necessários não enviados ou incorretos',
+        schema: {
+          $ref: '#/definitions/Login'
+        }
+      }
+      #swagger.responses[500] = { 
+        description: 'Erro ao salvar usuário',
+        schema: {
+          $ref: '#/definitions/Login'
+        }
+      }
+      #swagger.responses[200] = { 
+        description: 'Usuário criado com sucesso',
+        schema: {
+        $ref: '#/definitions/Usuario'
+        }
+      }
+    */
     let schema = yup.object().shape({
       login: yup.string().required("Login"),
       senha: yup.string().required("Senha")

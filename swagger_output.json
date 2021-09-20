@@ -1,0 +1,331 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Digital Wallet API",
+    "description": "Api Digital Wallet"
+  },
+  "host": "localhost:3333",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Verificação",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Movimentação",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Saldo",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Autenticação",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Usuário",
+      "description": "Endpoints"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Verificação"
+        ],
+        "description": "Endpoint para testar se o servidor está online",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Mensagem de Ok!",
+            "schema": {
+              "$ref": "#/definitions/Base"
+            }
+          }
+        }
+      }
+    },
+    "/user": {
+      "post": {
+        "tags": [
+          "Usuário"
+        ],
+        "description": "Endpoint para criar um usuário",
+        "parameters": [
+          {
+            "name": "400",
+            "in": "body",
+            "description": "Dados do usuário",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário criado com sucesso",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "Parâmetros necessários não enviados ou incorretos",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          },
+          "500": {
+            "description": "Erro ao salvar usuário",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        }
+      }
+    },
+    "/session": {
+      "post": {
+        "tags": [
+          "Autenticação"
+        ],
+        "description": "Endpoint para autenticar um usuário",
+        "parameters": [
+          {
+            "name": "400",
+            "in": "body",
+            "description": "Dados para o Login",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login Realizado com sucesso!",
+            "schema": {
+              "$ref": "#/definitions/Usuario"
+            }
+          },
+          "400": {
+            "description": "Credenciais não fornecidas",
+            "schema": {
+              "$ref": "#/definitions/Base"
+            }
+          },
+          "401": {
+            "description": "Credenciais invalidas",
+            "schema": {
+              "$ref": "#/definitions/Base"
+            }
+          }
+        }
+      }
+    },
+    "/saldo": {
+      "get": {
+        "tags": [
+          "Saldo"
+        ],
+        "description": "Endpoint para exibir o saldo de um usuário",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Mostra o saldo do usuário",
+            "schema": {
+              "$ref": "#/definitions/Saldo"
+            }
+          },
+          "400": {
+            "description": "Usuário não possui saldo cadastrado!",
+            "schema": {
+              "$ref": "#/definitions/Base"
+            }
+          },
+          "401": {
+            "description": "Não autorizado"
+          }
+        }
+      }
+    },
+    "/movimentacao": {
+      "post": {
+        "tags": [
+          "Movimentação"
+        ],
+        "description": "Endpoint para realizar uma movimentação",
+        "parameters": [
+          {
+            "name": "200",
+            "in": "body",
+            "description": "Dados para a movimentação",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddMovimentacao"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Movimentação Realizada com Sucesso",
+            "schema": {
+              "$ref": "#/definitions/Movimentacao"
+            }
+          },
+          "400": {
+            "description": "Parâmetros necessários não enviados ou incorretos",
+            "schema": {
+              "$ref": "#/definitions/Base"
+            }
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "500": {
+            "description": "Erro interno",
+            "schema": {
+              "$ref": "#/definitions/Base"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Movimentação"
+        ],
+        "description": "Endpoint para listar as movimentações de um usuário",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Lista as movimentações do usuário",
+            "schema": {
+              "$ref": "#/definitions/Movimentacao"
+            }
+          },
+          "401": {
+            "description": "Não autorizado"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Base": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Mensagem"
+        }
+      }
+    },
+    "Usuario": {
+      "type": "object",
+      "properties": {
+        "login": {
+          "type": "string",
+          "example": "joao.silva"
+        },
+        "senha": {
+          "type": "string",
+          "example": "123456"
+        },
+        "nome": {
+          "type": "string",
+          "example": "João Silva"
+        }
+      },
+      "required": [
+        "login",
+        "senha"
+      ]
+    },
+    "Login": {
+      "type": "object",
+      "properties": {
+        "login": {
+          "type": "string",
+          "example": "joao.silva"
+        },
+        "senha": {
+          "type": "string",
+          "example": "123456"
+        }
+      },
+      "required": [
+        "login",
+        "senha"
+      ]
+    },
+    "Saldo": {
+      "type": "object",
+      "properties": {
+        "login": {
+          "type": "string",
+          "example": "joao.silva"
+        },
+        "saldo": {
+          "type": "number",
+          "example": 100
+        }
+      }
+    },
+    "AddMovimentacao": {
+      "type": "object",
+      "properties": {
+        "login_destino": {
+          "type": "string",
+          "example": "maria.jose"
+        },
+        "valor_transferido": {
+          "type": "number",
+          "example": 50
+        }
+      }
+    },
+    "Movimentacao": {
+      "type": "object",
+      "properties": {
+        "id_transacao": {
+          "type": "number",
+          "example": 1
+        },
+        "login_destino": {
+          "type": "string",
+          "example": "maria.jose"
+        },
+        "valor_transferido": {
+          "type": "number",
+          "example": 50
+        },
+        "login_origem": {
+          "type": "string",
+          "example": "joao.silva"
+        },
+        "data": {
+          "type": "string",
+          "example": "2021-09-20T08:17:09.513Z"
+        }
+      }
+    }
+  }
+}

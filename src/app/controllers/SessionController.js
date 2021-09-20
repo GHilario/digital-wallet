@@ -3,6 +3,36 @@ import SessionService from "../services/SessionService";
 
 class SessionController {
   async store(req, res) {
+    /* 
+    #swagger.tags = ['Autenticação']
+    #swagger.description = 'Endpoint para autenticar um usuário'
+    #swagger.parameters = {
+      in:'body',
+      description:'Dados para o Login',
+      required:true,
+      schema: {
+        $ref: '#/definitions/Login'
+      }
+    }
+    #swagger.responses[400] = { 
+      description: 'Credenciais não fornecidas',
+      schema: {
+        $ref: '#/definitions/Base'
+      }
+    }
+    #swagger.responses[401] = { 
+      description: 'Credenciais invalidas',
+      schema: {
+        $ref: '#/definitions/Base'
+      }
+    }
+    #swagger.responses[200] = { 
+      description: 'Login Realizado com sucesso!',
+      schema: {
+        $ref: '#/definitions/Usuario'
+      }
+    }
+    */
     let schema = yup.object().shape({
       login: yup.string().required("Login"),
       senha: yup.string().required("Senha")

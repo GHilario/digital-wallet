@@ -7,7 +7,8 @@
   "scripts": {
     "start": "sucrase-node src/index.js",
     "dev": "nodemon src/index.js",
-    "build": "sucrase src -d build --transforms javascript,imports"
+    "build": "sucrase src -d build --transforms javascript,imports",
+    "swagger-autogen": "sucrase-node swagger.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,8 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0",
+    "swagger-autogen": "^2.11.2",
+    "swagger-ui-express": "^4.1.6",
     "yup": "^0.32.9"
   }
 }
