@@ -8,7 +8,8 @@
     "start": "sucrase-node src/index.js",
     "dev": "nodemon src/index.js",
     "build": "sucrase src -d build --transforms javascript,imports",
-    "swagger-autogen": "sucrase-node swagger.js"
+    "swagger-autogen": "sucrase-node swagger.js",
+    "migrate": "sequelize db:migrate"
   },
   "repository": {
     "type": "git",
