@@ -1,4 +1,4 @@
-# Instruções completas de execução
+# Instruções de execução
 
 Primeiramente baixe o repositorio usando o comando
 **git clone https://github.com/GHilario/digital-wallet.git**
