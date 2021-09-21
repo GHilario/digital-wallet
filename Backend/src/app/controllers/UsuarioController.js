@@ -17,13 +17,13 @@ class UsuarioControler {
       #swagger.responses[400] = { 
         description: 'Parâmetros necessários não enviados ou incorretos',
         schema: {
-          $ref: '#/definitions/Login'
+          $ref: '#/definitions/Base'
         }
       }
       #swagger.responses[500] = { 
         description: 'Erro ao salvar usuário',
         schema: {
-          $ref: '#/definitions/Login'
+          $ref: '#/definitions/Base'
         }
       }
       #swagger.responses[200] = { 
