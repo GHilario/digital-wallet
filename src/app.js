@@ -1,6 +1,7 @@
 import "./database";
 import express from "express";
 import routes from "./routes";
+import cors from 'cors';
 import swaggerUi from "swagger-ui-express";
 import swaggerFile from "/home/gabriel/projetos/digital-wallet/swagger_output.json";
 
@@ -12,6 +13,7 @@ class App {
   }
 
   middleware() {
+    this.server.use(cors());
     this.server.use(express.json());
   }
 
