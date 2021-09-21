@@ -224,15 +224,15 @@ Endpoint para listar as movimentações de um usuário
   * **Code:** 200 <br />
     **Content:** 
 ```json
-{
-	[
+[
+  {
 	  "id_transacao": "number",
 	  "login_destino": "string",
 	  "valor_transferido": "number",
 	  "login_origem": "string",
 	  "data": "date"
-   ]
-}
+  }
+]
 ```
  
 * **Error Response:**
