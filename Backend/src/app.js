@@ -3,7 +3,7 @@ import express from "express";
 import routes from "./routes";
 import cors from 'cors';
 import swaggerUi from "swagger-ui-express";
-import swaggerFile from "/home/gabriel/projetos/digital-wallet/swagger_output.json";
+const swaggerFile = require(`../swagger_output.json`);
 
 class App {
   constructor() {
