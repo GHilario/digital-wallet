@@ -22,3 +22,7 @@ Na pasta de Frontend siga os seguintes passos:
 3. execute o comando **yarn start**
 4. O Portal web estará disponivel na portal 3000
 	http://localhost:3000
+
+Observação: Ao subir o backend será criado um usuário padrão
+login: ADMIN
+senha: 123456

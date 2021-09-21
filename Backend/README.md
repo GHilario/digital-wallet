@@ -11,3 +11,7 @@ Na pasta de Backend siga os seguintes passos:
 3. O servidor esta configurado para rodar na porta 3333, caso queira mudar basta trocar no arquivo src/index.js
 4. execute o comando **yarn start**
 5. A documentação da api pode ser acessada pela rota **/doc**. http://localhost:3333/doc/
+
+Observação: Ao subir o backend será criado um usuário padrão
+login: ADMIN
+senha: 123456
