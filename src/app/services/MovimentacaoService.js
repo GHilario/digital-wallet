@@ -1,6 +1,7 @@
 import Usuario from "../models/Usuario";
 import Saldo from "../models/Saldo";
 import Movimentacao from "../models/Movimentacao";
+import { Op } from "sequelize";
 
 class MovimentacaoService {
   async createMovimentacao(mov) {
@@ -98,19 +99,21 @@ class MovimentacaoService {
   async listMovimentacao(userLogin) {
     const movimentacoes = await Movimentacao.findAll({
       where: {
-        login_origem: userLogin
+        [Op.or]: [{ login_origem: userLogin }, { login_destino: userLogin }]
       },
       include: [
         {
           model: Usuario,
-          as: "LoginOrigem"
+          as: "LoginOrigem",
+          attributes: ["login", "nome"]
         },
         {
           model: Usuario,
-          as: "LoginDestino"
+          as: "LoginDestino",
+          attributes: ["login", "nome"]
         }
       ],
-      order: ["data", "DESC"]
+      order: [["data", "DESC"]]
     });
 
     return movimentacoes;
